@@ -24,6 +24,13 @@ font = pygame.font.Font(None, 32)
 clock = pygame.time.Clock() 
 FPS = 60
 
+# --- ADDED: background image (put your image file in the same folder) ---
+# e.g. "wave.jpg" or "wave.png"
+BG_IMAGE_PATH = "wave.jpg"  # change filename if needed
+bg_img = pygame.image.load(BG_IMAGE_PATH).convert()
+bg_img = pygame.transform.smoothscale(bg_img, (SCREEN_WIDTH, SCREEN_HEIGHT))
+# ------------------------------------------------------------------------
+
 # ----------------------- Slider (for EMA smoothing) -----------------------
 # This slider controls 'alpha' in the EMA update:
 # ema_db = (1 - alpha) * ema_db + alpha * inst_db
@@ -142,7 +149,9 @@ while running:
     # Make waveform points (for drawing)
     ys = (samples * (SCREEN_HEIGHT / 2) + CENTER_Y).astype(np.int32)
     points = list(zip(range(CHUNK), ys))   # [(0,y0),(1,y1),...]
-    screen.fill(BG_COLOR)
+    # --- CHANGED: draw background image instead of solid fill ---
+    screen.blit(bg_img, (0, 0))
+    # ------------------------------------------------------------
     if len(points) > 1:
         pygame.draw.lines(screen, WAVE_COLOR, False, points, LINE_THICKNESS)
     
