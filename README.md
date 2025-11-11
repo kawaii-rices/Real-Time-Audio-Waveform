@@ -19,6 +19,11 @@ DB_FLOOR = -60.0
 # window + caption
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Real-time Audio Waveform")
+
+# --- add: load and scale background image ---
+bg_img = pygame.image.load("wave.png").convert()
+bg_img = pygame.transform.smoothscale(bg_img, (SCREEN_WIDTH, SCREEN_HEIGHT))
+
 # font + clock(60 fps)
 font = pygame.font.Font(None, 32)
 clock = pygame.time.Clock() 
