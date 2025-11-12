@@ -9,10 +9,10 @@ import pyaudio # for microphone input
 pygame.init()
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 400
 CENTER_Y = SCREEN_HEIGHT // 2
-WAVE_COLOR = (255,255,255)
+WAVE_COLOR = (0, 100, 200)
 BG_COLOR = (10,20,40)
 TEXT_COLOR = (255,255,0)
-LINE_THICKNESS = 2
+LINE_THICKNESS = 4
 
 # dB display settings
 DB_FLOOR = -60.0
@@ -22,7 +22,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Real-time Audio Waveform")
 
 # --- add: load and scale background image ---
-bg_img = pygame.image.load("wave.png").convert()
+bg_img = pygame.image.load("wave.jpg").convert()
 bg_img = pygame.transform.smoothscale(bg_img, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
 # font + clock(60 fps)
@@ -31,7 +31,7 @@ clock = pygame.time.Clock()
 FPS = 60
 
 # --- ADDED: background image (put your image file in the same folder) ---
-# e.g. "wave.jpg" or "wave.png"
+# e.g. "wave.png" or "wave.png"
 BG_IMAGE_PATH = "wave.jpg"  # change filename if needed
 bg_img = pygame.image.load(BG_IMAGE_PATH).convert()
 bg_img = pygame.transform.smoothscale(bg_img, (SCREEN_WIDTH, SCREEN_HEIGHT))
